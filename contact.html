@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us Form</title>
+  <link rel="stylesheet" href="style1.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+  <style>
+    /* Added CSS styles for thank-you message */
+    .thank-you {
+      display: none;
+      text-align: center;
+      font-size: 32px;
+      color: white;
+      margin-top: 200px;
+    }
+    
+    /* Added CSS styles for home page link */
+    .home-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="inner-width">
+      <a href="index.html" class="logo"><span>Annie's</span> Boutique</a>
+      <div class="navbar-menu">
+        <a href="index.html">home</a>
+        <a href="#" class="logo"><i class="fas fa-seedling"></i></a>
+        <a href="product.html" class="link">products</a> 
+        <a href="mycart.html">Mycart</a>
+	  <a href="about.html">about</a>
+        <a href="#">contact</a> 
+      </div>
+    </div>
+  </div>
+  <div class="contact-us">
+    <div class="title">
+      <h1>Get in touch with us</h1>
+      <h2>Our team is ready to answer all your questions and address all your concerns.</h2>
+    </div>
+    <div class="contact">
+      <div class="item name-email">
+        <input class="field" type="text" placeholder="Your name">
+        <input class="field" type="text" placeholder="Your email">
+      </div>
+      <div class="item">
+        <textarea class="field" placeholder="Message"></textarea>
+        <div class="button">
+          <button onclick="showThankYou()">Send</button>
+        </div>
+      </div>
+    </div>
+<div>
+<p>Jacobs Street 1, NL-1007 | +31 612 345 678 </p>
+</div>
+  </div>
+
+  <!-- Added thank-you message container -->
+  <div class="thank-you" id="thankYouMessage">
+    Thank you for writing to us. We will get in touch with you shortly!
+  </div>
+
+
+  <script>
+    function showThankYou() {
+      var contactUsDiv = document.querySelector('.contact-us');
+      var thankYouDiv = document.getElementById('thankYouMessage');
+      
+      contactUsDiv.style.display = 'none';
+      thankYouDiv.style.display = 'block';
+
+    }
+  </script>
+</body>
+</html>

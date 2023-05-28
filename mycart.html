@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>  
+<div class="navbar">
+    <div class="inner-width">
+      <a href="index.html" class="logo"><span>Annie's</span> Boutique</a>
+      <div class="navbar-menu">
+        <a href="index.html">home</a>
+        <a href="#" class="logo"><i class="fas fa-seedling"></i></a>
+        <a href="product.html" class="link">products</a> 
+        <a href="#">Mycart</a>
+	  <a href="about.html">about</a>
+        <a href="contact.html">contact</a> 
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>My Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="total-price">
+      
+      <p id="total-price"></p>
+    </div>
+
+    <button id="order-button" class="btn btn-primary">Order</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+// Function to parse URL parameters
+function parseParams() {
+  var params = {};
+  var parts = window.location.search.substring(1).split("&");
+  for (var i = 0; i < parts.length; i++) {
+    var pair = parts[i].split("=");
+    var key = decodeURIComponent(pair[0]);
+    var value = decodeURIComponent(pair[1]);
+    params[key] = value;
+  }
+  return params;
+}
+
+// Function to calculate the total price
+function calculateTotalPrice() {
+  var totalPrice = 0;
+  cartItems.forEach(function (item) {
+    totalPrice += 2; // Assuming each item costs 2 EUR
+  });
+  return totalPrice;
+}
+
+// Function to remove an item from the cart
+function removeFromCart(index) {
+  cartItems.splice(index, 1);
+  // Store updated cart items in local storage
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  renderCartItems();
+}
+
+// Function to render the cart items
+function renderCartItems() {
+  var cartItemsContainer = document.getElementById("cart-items");
+  // Clear previous items
+  cartItemsContainer.innerHTML = "";
+
+  // Render the cart items
+  cartItems.forEach(function (item, index) {
+    var cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+
+    var imageContainer = document.createElement("div");
+    imageContainer.classList.add("image-container");
+
+    var removeButton = document.createElement("button");
+    removeButton.classList.add("remove-button");
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", function () {
+      removeFromCart(index);
+    });
+
+    var flowerImage = document.createElement("img");
+    flowerImage.src = item;
+    flowerImage.alt = "Flower";
+    flowerImage.classList.add("flower-image");
+
+    imageContainer.appendChild(removeButton);
+    imageContainer.appendChild(flowerImage);
+    cartItem.appendChild(imageContainer);
+
+    cartItemsContainer.appendChild(cartItem);
+  });
+
+  // Update the total price
+  var totalPriceElement = document.getElementById("total-price");
+  totalPriceElement.textContent = "Total Price: " + calculateTotalPrice() + " EUR";
+
+  // Handle order button click
+  var orderButton = document.getElementById("order-button");
+  orderButton.addEventListener("click", function () {
+    // Store the total price in localStorage
+    var totalPrice = calculateTotalPrice();
+    localStorage.setItem("totalPrice", totalPrice);
+
+    // Redirect to the order page
+    window.location.href = "order.html";
+  });
+}
+
+// Retrieve cart items from local storage or URL parameters
+var cartItems;
+var params = parseParams();
+if (params.cartItems) {
+  // Cart items passed as URL parameter
+  cartItems = params.cartItems.split(",");
+  // Store cart items in local storage for future visits
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+} else {
+  // Retrieve cart items from local storage
+  cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+}
+
+// Render the cart items on page load
+renderCartItems();
+</script>
+</body>
+</html>

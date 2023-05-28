@@ -1,0 +1,139 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.navbar{
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  padding: 30px 0;
+  top: 0;
+  z-index: 100;
+  line-height: 20px;
+}
+.inner-width{
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  font-family: 'Great Vibes',cursive;
+  color: #fff;
+  cursor: pointer;
+}
+.logo span{
+  font-size: 38px;
+  color: #9a533d;
+}
+.navbar-menu a{
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Raleway',sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 35px;
+  display: inline-block;
+}
+.navbar-menu a::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 1.8px;
+  background-color: #846445;
+  transition: width .3s;
+}
+.navbar-menu a:hover::after{
+  width: 100%;
+}/* Reset default margin and padding */
+body, h1, h2, ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set font family and color for the body */
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+  background-image: url("55.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Header styles */
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Section styles */
+section {
+  background-color: transparent;
+  padding: 20px;
+  margin: 20px;
+}
+
+section h1 {
+  font-size: 24px;
+  margin-top:45px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+section p {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+ color: #fff;
+}
+
+section ul {
+  margin-bottom: 15px;
+}
+
+section ul li {
+  margin-bottom: 5px;
+ color: #fff;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
